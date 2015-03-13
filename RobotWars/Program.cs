@@ -15,13 +15,14 @@ namespace RobotWars
             var arena = arenaParser.ParseArena(Console.ReadLine());
 
             var robot = new Robot();
-            while ( robot != null)
+            while ( true )
             {
                 robot = robotParser.ParseRobot(Console.ReadLine(), arena);
-                if (robot != null)
+                if (robot == null)
                 {
-                    robotCommandParser.ProcessRobotCommands(Console.ReadLine(), robot, arena);
+                    break;
                 }
+                robotCommandParser.ProcessRobotCommands(Console.ReadLine(), robot, arena);
             }
 
             foreach (var finalRobot in arena.Robots)
